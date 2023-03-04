@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+              aria-expanded="false" aria-controls="navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" >Betting app</a>
+    </div>
+  </div>
+</nav>
+<br><br><br><br>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <h1>Zaloguj się, aby rozpocząć obstawianie!</h1>
+      <br><br>
+      <form th:action="@{/login}" method="post">
+
+        <!--error message-->
+        <div th:if="${param.error}">
+          <div class="alert alert-danger">
+            Nieprawidłowy email lub hasło.
+          </div>
+        </div>
+
+        <!--logout message-->
+        <div th:if="${param.logout}">
+          <div class="alert alert-info">
+            Wylogowano pomyślnie.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email: </label>
+          <input id="email" type="text" class="form-control" name="username"
+                 placeholder="Nazwa użytkownika: " autofocus="autofocus">
+        </div>
+
+        <div class="form-group">
+          <label for="password">Hasło: </label>
+          <input id="password" type="password" class="form-control" name="password"
+                 placeholder="Wprowadź hasło" autofocus="autofocus">
+        </div>
+
+        <div class="form-group">
+          <div class="row">
+            <div class="col-sm-6 col-sm-offset-3">
+              <input type="submit" name="Login-submit" id="Login-submit"
+                     class="form-control btn btn-primary" value="Zaloguj się">
+            </div>
+          </div>
+        </div>
+
+      </form>
+      <div class="form-group">
+        <span>Nie masz jeszcze konta? <a href="/" th:href="@{/registration}">Zarejestruj się tutaj.</a></span>
+      </div>
+
+    </div>
+  </div>
+</div>
+</body>
+</html>
